@@ -1,16 +1,12 @@
 import React from 'react';
 import LandingWrapper from './components/LandingWrapper';
-import { Menu, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 
 const App = () => {
   return (
-    <div className="App">
-      <Container>
-      <Menu stackable color="teal" inverted>
-          <Menu.Item
-              name='todo' style={{border: "none"}}><a href="/">To Do App</a></Menu.Item>          
-          </Menu>      
-      <LandingWrapper />
+    <div>
+      <Container style={{background: "white"}}>   
+        <LandingWrapper />
       </Container>
     </div>
   );

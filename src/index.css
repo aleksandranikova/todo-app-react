@@ -17,18 +17,44 @@ code {
   border: 1px solid black;
   width: 20vw;
 }
+
 .list {
   margin-left: 0px;
 }
+
 .list-group-item {
   display: flex;
   justify-content: space-between;
 }
+
 .list-group-item a {
   cursor: pointer;
 }
+
 .droppable {
   min-height: 100px;
-  width: 20vw;
-  margin-right: 9vw;
+  margin-right: 1vw;
+  width: 30vw;
+}
+
+.custom-margin{
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.custom-image{
+  width: 76vw;
+  height: 40vw;
+}
+
+.dark-grey-background {
+  background-color: rgba(0,0,0,.1)
+}
+
+body:not(.container) {
+  background: rgba(0,0,0,.1);
+}
+
+.container {
+  padding-bottom: 2vw;
 }

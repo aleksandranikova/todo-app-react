@@ -6,17 +6,19 @@ import * as actions from '../actions';
 class DragDropWrapper extends Component {
   onDragEnd = async (evt) => {
     const { todoItems, doneItems } = this.props;
-    const { source } = evt;
+    const { source, destination } = evt;
     let item = {};
-    if (source.droppableId == "todoDroppable") {
-      item = todoItems[source.index];
-      item.done = true;
-      this.props.moveToDone(item);
-    }
-    else {
-      item = doneItems[source.index];
-      item.done = false;
-      this.props.moveToDo(item);
+    if (source.droppableId !== destination.droppableId) {
+      if (source.droppableId === "todoDroppable") {
+        item = todoItems[source.index];
+        item.done = true;
+        this.props.moveToDone(item);
+      }
+      else {
+        item = doneItems[source.index];
+        item.done = false;
+        this.props.moveToDo(item);
+      }
     }
   }
 
@@ -41,7 +43,7 @@ class DragDropWrapper extends Component {
                     ref={provided.innerRef}
                   >
                     &nbsp;
-                      <h2>To Do</h2>
+                      <h4>To Do</h4>
                     <div className="list-group">
                       {this.props.todoItems.map((item, index) => (
                         <Draggable
@@ -51,7 +53,7 @@ class DragDropWrapper extends Component {
                         >
                           {(provided, snapshot) => (
                             <div
-                              className='list-group-item '
+                              className='list-group-item'
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
@@ -77,7 +79,7 @@ class DragDropWrapper extends Component {
                     ref={provided.innerRef}
                   >
                     &nbsp;
-                      <h2>Done</h2>
+                      <h4>Done</h4>
                     <div className="list-group">
                       {this.props.doneItems.map((item, index) => (
                         <Draggable
@@ -87,14 +89,14 @@ class DragDropWrapper extends Component {
                         >
                           {(provided) => (
                             <div
-                              className='list-group-item'
+                              className='list-group-item dark-grey-background'
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                             >
                               {item.description}
                               <a>
-                                <i className="fa fa-close"></i>
+                                <i onClick={this.removeTask.bind(this, item)} className="fa fa-close"></i>
                               </a>
                             </div>
                           )}

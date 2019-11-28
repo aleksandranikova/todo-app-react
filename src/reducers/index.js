@@ -5,6 +5,9 @@ const selectedTask = (state = null, action) => {
         case "SELECT_TASK": {
             return action.payload
         }
+        case "SAVE_EDIT": {
+            return null;
+        }
         default: {
             return state;
         }
@@ -16,16 +19,21 @@ const allTasks = (state = [], action) => {
             return [...state, action.payload];
         }
         case "MOVE_TO_DONE": {
-            var newState = state.filter(x => x.id != action.payload.id);
+            var newState = state.filter(x => x.id !== action.payload.id);
             return [...newState, action.payload];
         }
         case "MOVE_TO_DO": {
-            var newState = state.filter(x => x.id != action.payload.id);
+            newState = state.filter(x => x.id !== action.payload.id);
             return [...newState, action.payload];
         }
         case "REMOVE_TASK": {
-            var newState = state.filter(x => x.id != action.payload);
+            newState = state.filter(x => x.id !== action.payload);
             return [...newState];
+        }
+        case "SAVE_EDIT": {
+            var task = state.find(x => x.id === action.payload.id);
+            task.description = action.payload.description;
+            return [...state];
         }
         default: {
             return state;
@@ -39,15 +47,20 @@ const activeTasks = (state = [], action) => {
             return [...state, action.payload];
         }
         case "MOVE_TO_DONE": {
-            var newState = state.filter(x => x.id != action.payload.id);
+            var newState = state.filter(x => x.id !== action.payload.id);
             return [...newState];
         }
         case "MOVE_TO_DO": {
             return [...state, action.payload];
         }
         case "REMOVE_TASK": {
-            var newState = state.filter(x => x.id != action.payload);
+            newState = state.filter(x => x.id !== action.payload);
             return [...newState];
+        }
+        case "SAVE_EDIT": {
+            var task = state.find(x => x.id === action.payload.id);
+            task.description = action.payload.description;
+            return [...state];
         }
         default: {
             return state;
@@ -58,14 +71,14 @@ const activeTasks = (state = [], action) => {
 const doneTasks = (state = [], action) => {
     switch(action.type) {
         case "MOVE_TO_DO": {
-            var newState = state.filter(x => x.id != action.payload.id);
+            var newState = state.filter(x => x.id !== action.payload.id);
             return [...newState];
         }
         case "MOVE_TO_DONE": {
             return [...state, action.payload];
         }
         case "REMOVE_TASK": {
-            var newState = state.filter(x => x.id != action.payload);
+            newState = state.filter(x => x.id !== action.payload);
             return [...newState];
         }
         default: {
