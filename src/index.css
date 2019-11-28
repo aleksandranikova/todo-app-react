@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.item {
+  padding: 20px;
+  border: 1px solid black;
+  width: 20vw;
+}
+.list {
+  margin-left: 0px;
+}
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+.list-group-item a {
+  cursor: pointer;
+}
+.droppable {
+  min-height: 100px;
+  width: 20vw;
+  margin-right: 9vw;
+}

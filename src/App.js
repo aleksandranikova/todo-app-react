@@ -8,7 +8,7 @@ const App = () => {
       <Container>
       <Menu stackable color="teal" inverted>
           <Menu.Item
-              name='todo'><a href="/">To Do App</a></Menu.Item>          
+              name='todo' style={{border: "none"}}><a href="/">To Do App</a></Menu.Item>          
           </Menu>      
       <LandingWrapper />
       </Container>
