@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const selectedTask = (state = null, action) => {
     switch(action.type) {
         case "SELECT_TASK": {
-            return action.payload
+            return action.payload;
         }
         case "SAVE_EDIT": {
             return null;
@@ -19,19 +19,21 @@ const allTasks = (state = [], action) => {
             return [...state, action.payload];
         }
         case "MOVE_TO_DONE": {
-            var newState = state.filter(x => x.id !== action.payload.id);
-            return [...newState, action.payload];
+            var task = state.find(x => x.id === action.payload.id);
+            task.done = true;
+            return [...state];
         }
         case "MOVE_TO_DO": {
-            newState = state.filter(x => x.id !== action.payload.id);
-            return [...newState, action.payload];
+            task = state.find(x => x.id === action.payload.id);
+            task.done = false;
+            return [...state];
         }
         case "REMOVE_TASK": {
-            newState = state.filter(x => x.id !== action.payload);
+            var newState = state.filter(x => x.id !== action.payload);
             return [...newState];
         }
         case "SAVE_EDIT": {
-            var task = state.find(x => x.id === action.payload.id);
+            task = state.find(x => x.id === action.payload.id);
             task.description = action.payload.description;
             return [...state];
         }

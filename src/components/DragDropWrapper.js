@@ -8,7 +8,7 @@ class DragDropWrapper extends Component {
     const { todoItems, doneItems } = this.props;
     const { source, destination } = evt;
     let item = {};
-    if (source.droppableId !== destination.droppableId) {
+    if (destination && source.droppableId !== destination.droppableId) {
       if (source.droppableId === "todoDroppable") {
         item = todoItems[source.index];
         item.done = true;

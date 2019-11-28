@@ -32,19 +32,18 @@ code {
 }
 
 .droppable {
-  min-height: 100px;
-  margin-right: 1vw;
-  width: 30vw;
+  min-height: 8em;
+  margin-right: 2em;
+  width: 30em;
 }
 
 .custom-margin{
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .custom-image{
-  width: 76vw;
-  height: 40vw;
+  width: 100%;
 }
 
 .dark-grey-background {
@@ -56,5 +55,5 @@ body:not(.container) {
 }
 
 .container {
-  padding-bottom: 2vw;
+  padding-bottom: 2em;
 }
