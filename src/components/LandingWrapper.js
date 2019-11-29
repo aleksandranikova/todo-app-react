@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import DragDropWrapper from './DragDropWrapper';
 import ModalWrapper from './ModalWrapper';
 
-class LandingWrapper extends Component {
+export class LandingWrapper extends Component {
     state = {
         currentTask: "",
         errorClass: false
@@ -16,7 +16,7 @@ class LandingWrapper extends Component {
             this.setState({ currentTask: this.props.selectedTask.description });
         }
     }
-    render() {
+    render() { 
         return (
             <div>
                 <img className="custom-image" src="/landing.jpg" alt=""></img>
