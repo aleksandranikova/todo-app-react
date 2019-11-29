@@ -14,6 +14,8 @@ export class LandingWrapper extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.selectedTask !== this.props.selectedTask && this.props.selectedTask) {
             this.setState({ currentTask: this.props.selectedTask.description });
+        } else if (prevProps.selectedTask !== this.props.selectedTask && !this.props.selectedTask) {
+            this.setState({ currentTask: "" });
         }
     }
     render() { 
@@ -27,7 +29,7 @@ export class LandingWrapper extends Component {
                 </div>
                 <Progress color='teal' value={this.props.allTasks.length - this.props.activeTasks.length} total={this.props.allTasks.length} />
                 <Divider horizontal>{this.props.allTasks.length - this.props.activeTasks.length} / {this.props.allTasks.length}</Divider>
-                <Button onClick={this.markAllAsDone} disabled={this.props.activeTasks.length === 0}>Mark all as Done</Button>
+                <Button className="btn-test" onClick={this.markAllAsDone} disabled={this.props.activeTasks.length === 0}>Mark all as Done</Button>
                 <ModalWrapper></ModalWrapper>
          </div>
         );
@@ -75,7 +77,8 @@ const mapStateToProps = (state) => {
     return {
         allTasks: state.allTasks,
         activeTasks: state.activeTasks,
-        selectedTask: state.selectedTask
+        selectedTask: state.selectedTask,
+        doneTasks: state.doneTasks
     }
 }
 export default connect(mapStateToProps, actions)(LandingWrapper);

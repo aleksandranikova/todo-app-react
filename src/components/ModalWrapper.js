@@ -38,7 +38,7 @@ class ModalWrapper extends Component {
 
     render() {
         return (
-          <Modal trigger={<Button>Show history</Button>} basic size='small' onClose={this.onClose}>
+          <Modal trigger={<Button>Show history</Button>} basic size='small' onClose={this.onClose} closeIcon>
           <Header icon='archive' content='Task History' />
             <Modal.Content>
               <p>
