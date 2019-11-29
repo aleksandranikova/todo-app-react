@@ -8,6 +8,15 @@ const selectedTask = (state = null, action) => {
         case "SAVE_EDIT": {
             return null;
         }
+        case "MOVE_TO_DONE": {
+            return null;
+        }
+        case "MOVE_TO_DO": {
+            return null;
+        }
+        case "REMOVE_TASK": {
+            return null;
+        }
         default: {
             return state;
         }
